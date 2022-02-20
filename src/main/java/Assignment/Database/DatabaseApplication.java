@@ -17,6 +17,11 @@ public class DatabaseApplication {
 		Customer richie = new Customer(80, "Richie", "Schuurman", "Nederland",
 				"1161XC", "0612345678", "richie@hotmail.com");
 
-		customerAddAndUpdate.addCustomer(richie);
+		//customerAddAndUpdate.addCustomer(richie);
+
+		Customer updateRichie = new Customer(80, "Richie", "Schuurman", "Netherlands",
+				"1024NS", "0698765432", "schuurman@hotmail.com");
+
+		customerAddAndUpdate.updateCustomer(updateRichie);
 	}
 }

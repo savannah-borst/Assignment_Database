@@ -18,9 +18,9 @@ public class CustomerAddAndUpdate {
         try {
             //Connect to Database
             conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            System.out.println("Connection to Chinook has been established.");
 
-            //Make SQL ADD query
+            //Make SQL INSERT query
             PreparedStatement preparedStatement =
                     conn.prepareStatement("INSERT INTO customer(CustomerId,FirstName,LastName,Country,PostalCode,Phone,Email) VALUES (?,?,?,?,?,?,?)");
             preparedStatement.setInt(1,customer.getCustomerId());
@@ -31,7 +31,7 @@ public class CustomerAddAndUpdate {
             preparedStatement.setString(6,customer.getPhone());
             preparedStatement.setString(7, customer.getEmail());
 
-            //Execute SQL ADD query
+            //Execute SQL INSERT query
             int result = preparedStatement.executeUpdate();
             success = (result != 0);
             System.out.println("You successfully added a customer");
@@ -57,7 +57,7 @@ public class CustomerAddAndUpdate {
         try {
             //Connect to Database
             conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to SQLite has been established.");
+            System.out.println("Connection to Chinook has been established.");
 
             //Make SQL UPDATE query
             PreparedStatement preparedStatement =

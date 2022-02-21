@@ -142,4 +142,50 @@ public class CustomerRepository {
         }
         return customer;
     }
+
+    //Return a page of customers from the database.
+    public ArrayList<Customer> getPageOfCustomers(int from, int to) {
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        try {
+            //Connect to database
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection to Chinook has been established.");
+
+            //Make query
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer WHERE CustomerId BETWEEN ? AND ?");
+            preparedStatement.setInt(1, from);
+            preparedStatement.setInt(2, to);
+
+            //Execute statement
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                customers.add(
+                        new Customer(
+                                resultSet.getInt("CustomerId"),
+                                resultSet.getString("FirstName"),
+                                resultSet.getString("LastName"),
+                                resultSet.getString("Country"),
+                                resultSet.getString("PostalCode"),
+                                resultSet.getString("Phone"),
+                                resultSet.getString("Email")
+                        ));
+            }
+
+        } catch (Exception exception)  {
+            System.out.println("Please check your query");
+            System.out.println(exception);
+        } finally {
+            try {
+                conn.close();
+                System.out.println("Closed connection with success");
+            } catch (Exception exception) {
+                System.out.println("something went wrong while closing connection");
+                System.out.println(exception.toString());
+            }
+        }
+
+        return customers;
+    }
 }

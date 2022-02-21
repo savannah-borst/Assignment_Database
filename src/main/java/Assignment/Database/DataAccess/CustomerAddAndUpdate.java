@@ -20,7 +20,7 @@ public class CustomerAddAndUpdate {
             conn = DriverManager.getConnection(URL);
             System.out.println("Connection to SQLite has been established.");
 
-            //Make SQL Add query
+            //Make SQL ADD query
             PreparedStatement preparedStatement =
                     conn.prepareStatement("INSERT INTO customer(CustomerId,FirstName,LastName,Country,PostalCode,Phone,Email) VALUES (?,?,?,?,?,?,?)");
             preparedStatement.setInt(1,customer.getCustomerId());
@@ -31,18 +31,20 @@ public class CustomerAddAndUpdate {
             preparedStatement.setString(6,customer.getPhone());
             preparedStatement.setString(7, customer.getEmail());
 
-            //Execute SQL Add query
+            //Execute SQL ADD query
             int result = preparedStatement.executeUpdate();
             success = (result != 0);
             System.out.println("You successfully added a customer");
 
         } catch (Exception exception) {
+            System.out.println("Please check your query");
             System.out.println(exception.toString());
         }
         finally {
             try {
                 conn.close();
             } catch (Exception exception) {
+                System.out.println("something went wrong while closing connection");
                 System.out.println(exception.toString());
             }
         }
@@ -57,7 +59,7 @@ public class CustomerAddAndUpdate {
             conn = DriverManager.getConnection(URL);
             System.out.println("Connection to SQLite has been established.");
 
-            //Make SQL Add query
+            //Make SQL UPDATE query
             PreparedStatement preparedStatement =
                     conn.prepareStatement("UPDATE customer SET Country = ?,PostalCode = ?,Phone = ?,Email = ? WHERE CustomerId = ?");
             preparedStatement.setString(1, customer.getCountry());
@@ -66,18 +68,20 @@ public class CustomerAddAndUpdate {
             preparedStatement.setString(4, customer.getEmail());
             preparedStatement.setInt(5, customer.getCustomerId());
 
-            //Execute SQL Add query
+            //Execute SQL UPDATE query
             int result = preparedStatement.executeUpdate();
             success = (result != 0);
             System.out.println("You successfully updated a customer");
 
         } catch (Exception exception) {
+            System.out.println("Please check your query");
             System.out.println(exception.toString());
         }
         finally {
             try {
                 conn.close();
             } catch (Exception exception) {
+                System.out.println("something went wrong while closing connection");
                 System.out.println(exception.toString());
             }
         }

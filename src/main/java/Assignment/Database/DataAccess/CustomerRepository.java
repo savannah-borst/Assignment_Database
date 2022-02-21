@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class CustomerRepository {
-    private String URL = ConnectionHelper.ConnectionURL;
+    private final String URL = ConnectionHelper.ConnectionURL;
     private Connection conn = null;
 
     //Read all the customers in the database
@@ -71,6 +71,7 @@ public class CustomerRepository {
             //Execute statement
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            //Process Results
             while (resultSet.next()) {
                 customer = new Customer(
                         resultSet.getInt("CustomerId"),
@@ -115,6 +116,7 @@ public class CustomerRepository {
             //Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            //Process results
             while (resultSet.next()) {
                 customer = new Customer(
                         resultSet.getInt("CustomerId"),
@@ -158,6 +160,7 @@ public class CustomerRepository {
             //Execute statement
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            //Process results
             while (resultSet.next()) {
                 customers.add(
                         new Customer(
@@ -183,7 +186,6 @@ public class CustomerRepository {
                 System.out.println(exception.toString());
             }
         }
-
         return customers;
     }
 }

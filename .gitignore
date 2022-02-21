@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+src/main/resources/Chinook_Sqlite.sqlite
+src/main/java/Assignment/Database/DatabaseApplication.java

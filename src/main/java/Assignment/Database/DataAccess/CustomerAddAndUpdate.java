@@ -43,6 +43,7 @@ public class CustomerAddAndUpdate {
         finally {
             try {
                 conn.close();
+                System.out.println("Closed connection with success");
             } catch (Exception exception) {
                 System.out.println("something went wrong while closing connection");
                 System.out.println(exception.toString());
@@ -80,6 +81,7 @@ public class CustomerAddAndUpdate {
         finally {
             try {
                 conn.close();
+                System.out.println("Closed connection with success");
             } catch (Exception exception) {
                 System.out.println("something went wrong while closing connection");
                 System.out.println(exception.toString());

@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 @Repository
-public class CustomerRepository {
+public class CustomerRepository implements ICustomerRepository {
     private final String URL = ConnectionHelper.ConnectionURL;
     private Connection conn = null;
 
@@ -59,7 +59,7 @@ public class CustomerRepository {
     }
 
     //Read a specific customer from the database (by Id)
-    public Customer getCustomerById(int customerId) {
+    public Customer getCustomerById(String customerId) {
         Customer customer = null;
 
         try {
@@ -69,7 +69,7 @@ public class CustomerRepository {
 
             //Make Query display: Id, first name, last name, country, postal code, phone number and email.
             PreparedStatement preparedStatement = conn.prepareStatement("SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer WHERE CustomerId = ?");
-            preparedStatement.setInt(1, customerId);
+            preparedStatement.setString(1, customerId);
 
             //Execute statement
             ResultSet resultSet = preparedStatement.executeQuery();

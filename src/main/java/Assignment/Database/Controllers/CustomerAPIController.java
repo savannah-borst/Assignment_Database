@@ -1,63 +1,73 @@
 package Assignment.Database.Controllers;
 
+import Assignment.Database.DataAccess.ICustomerRepository;
 import Assignment.Database.Models.Customer;
 import Assignment.Database.Models.CustomerCountry;
 import Assignment.Database.Models.CustomerSpender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class CustomerAPIController {
+    private final ICustomerRepository customerRepository;
+
+    public CustomerAPIController (
+            @Autowired ICustomerRepository customerRepository
+    ) {
+        this.customerRepository = customerRepository;
+    }
 
     @GetMapping("hello/world")
     public String hello() {
         return "Hello World";
     }
 
-    @GetMapping("customers")
+    @GetMapping("/customers")
     public ArrayList<Customer> getAllCustomers() {
-        return null;
+        return customerRepository.getAllCustomers();
     }
 
-    @GetMapping("customer/{customerId}")
-    public Customer getCustomerById(int customerId) {
-        return null;
+    @GetMapping("/customers/{id}")
+    public Customer getCustomerById(@PathVariable String id) {
+        return customerRepository.getCustomerById(id);
     }
 
-    @GetMapping("customer/{firstName}")
-    public Customer getCustomerByName(String firstName) {
-        return null;
+    @GetMapping("/customers/")
+    @ResponseBody
+    public Customer getCustomerByName(@RequestParam String firstName) {
+        return customerRepository.getCustomerByName(firstName);
     }
 
-    @GetMapping("customer/page")
+    @GetMapping("/customers/page")
     public ArrayList<Customer> getPageOfCustomers() {
         return null;
     }
 
-    @PostMapping("customer/add/{customer}")
+    @PostMapping("/customers/add")
     public Boolean addCustomer(Customer customer) {
         return null;
     }
 
-    @PutMapping("customer/update/{customer}")
+    @PutMapping("/customers/update/{customer}")
     public Boolean updateCustomer(Customer customer) {
         return null;
     }
 
-    @GetMapping("customer/country")
+    @GetMapping("/customers/country")
     public ArrayList<CustomerCountry> getCustomersCountry(){
         return null;
     }
 
-    @GetMapping("customer/spending")
+    @GetMapping("/customers/spending")
     public ArrayList<CustomerSpender> getCustomerSpending(){
         return null;
     }
 
-    @GetMapping("customer/{customerId}/most/popular/genre")
-    public Customer getCustomerGenre(int customerId) {
+    @GetMapping("/customers/{id}/most/popular/genre")
+    public Customer getCustomerGenre(String id) {
         return null;
     }
 }

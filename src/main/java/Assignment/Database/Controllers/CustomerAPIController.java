@@ -11,6 +11,11 @@ import java.util.ArrayList;
 @RequestMapping("api")
 public class CustomerAPIController {
 
+    @GetMapping("hello/world")
+    public String hello() {
+        return "Hello World";
+    }
+
     @GetMapping("customers")
     public ArrayList<Customer> getAllCustomers() {
         return null;

@@ -1,7 +1,5 @@
 package Assignment.Database.Models;
 
-import Assignment.Database.DataAccess.CustomerGenre;
-
 public class Customer {
     //Fields
     private int customerId;

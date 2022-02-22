@@ -3,6 +3,7 @@ package Assignment.Database.Models;
 import Assignment.Database.DataAccess.CustomerGenre;
 
 public class Customer {
+    //Fields
     private int customerId;
     private String firstName;
     private String lastName;
@@ -11,6 +12,7 @@ public class Customer {
     private String phone;
     private String email;
 
+    //Constructor
     public Customer(int customerId, String firstName, String lastName, String country, String postalCode, String phone, String email) {
         this.customerId = customerId;
         this.firstName = firstName;
@@ -21,6 +23,7 @@ public class Customer {
         this.email = email;
     }
 
+    //Getters and Setters
     public int getCustomerId() {
         return customerId;
     }

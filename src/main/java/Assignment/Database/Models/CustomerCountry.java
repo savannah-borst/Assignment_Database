@@ -2,17 +2,17 @@ package Assignment.Database.Models;
 
 public class CustomerCountry {
 
-    //fields
+    //Fields
     private String countryName;
     private int totalCustomers;
 
-    //constructor
+    //Constructor
     public CustomerCountry(String countryName, int totalCustomers) {
         this.countryName = countryName;
         this.totalCustomers = totalCustomers;
     }
 
-    //getters and setters
+    //Getters and Setters
     public String getCountryName() {
         return countryName;
     }

@@ -20,22 +20,17 @@ public class CustomerAPIController {
         this.customerRepository = customerRepository;
     }
 
-    @GetMapping("hello/world")
-    public String hello() {
-        return "Hello World";
-    }
-
     @GetMapping("/customers")
     public ArrayList<Customer> getAllCustomers() {
         return customerRepository.getAllCustomers();
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping("/customer/{id}")
     public Customer getCustomerById(@PathVariable String id) {
         return customerRepository.getCustomerById(id);
     }
 
-    @GetMapping("/customers/")
+    @GetMapping("/customer/")
     @ResponseBody
     public Customer getCustomerByName(@RequestParam String firstName) {
         return customerRepository.getCustomerByName(firstName);
@@ -43,27 +38,27 @@ public class CustomerAPIController {
 
     @GetMapping("/customers/page")
     public ArrayList<Customer> getPageOfCustomers() {
-        return null;
+        return customerRepository.getPageOfCustomers();
     }
 
-    @PostMapping("/customers/add")
+    @PostMapping("/customer/add")
     public Boolean addCustomer(Customer customer) {
         return null;
     }
 
-    @PutMapping("/customers/update/{customer}")
+    @PutMapping("/customer/update/{customer}")
     public Boolean updateCustomer(Customer customer) {
         return null;
     }
 
     @GetMapping("/customers/country")
     public ArrayList<CustomerCountry> getCustomersCountry(){
-        return null;
+        return customerRepository.getCustomersCountry();
     }
 
     @GetMapping("/customers/spending")
     public ArrayList<CustomerSpender> getCustomerSpending(){
-        return null;
+        return customerRepository.getCustomerSpending();
     }
 
     @GetMapping("/customers/{id}/most/popular/genre")

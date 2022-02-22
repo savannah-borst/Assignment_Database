@@ -2,6 +2,7 @@ package Assignment.Database.DataAccess;
 
 import Assignment.Database.Models.Customer;
 import Assignment.Database.Models.CustomerCountry;
+import Assignment.Database.Models.CustomerSpender;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -297,19 +298,68 @@ public class CustomerRepository {
                                 resultSet.getInt(1)
                         )
                 );
+                System.out.println("Select specific country successfully");
             }
-        } catch (SQLException sqe) {
-            sqe.printStackTrace();
+
+        } catch (Exception exception) {
             System.out.println("Please check your query");
-            System.out.println(sqe.getMessage());
-        } finally {
+            System.out.println(exception.toString());
+        }
+        finally {
             try {
                 conn.close();
+                System.out.println("Closed connection with success");
             } catch (Exception exception) {
                 System.out.println("something went wrong while closing connection");
+                System.out.println(exception.toString());
             }
         }
         return customersInCountry;
+    }
+
+    public ArrayList<CustomerSpender> getCustomerSpending(){
+        ArrayList<CustomerSpender> customerSpender = new ArrayList<>();
+
+        try {
+            //Connect to database
+            conn = DriverManager.getConnection(URL);
+            System.out.println("Connection established");
+
+            //Make SQL COUNT query
+            PreparedStatement statement = conn.prepareStatement("SELECT  C.CustomerId, C.FirstName, C.LastName, SUM(I.Total) AS Total " +
+                    "FROM Customer C " +
+                    "JOIN Invoice I on C.CustomerId = I.CustomerId " +
+                    "GROUP BY C.CustomerId " +
+                    "ORDER BY Total DESC");
+
+            //Execute query
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                customerSpender.add(
+                        new CustomerSpender(
+                                resultSet.getInt("CustomerId"),
+                                resultSet.getString("FirstName"),
+                                resultSet.getString("LastName"),
+                                resultSet.getDouble("Total")
+                        )
+                );
+            }
+            System.out.println("Select specific total spend by customer successfully");
+
+        } catch (Exception exception)  {
+            System.out.println("Please check your query");
+            System.out.println(exception);
+        } finally {
+            try {
+                conn.close();
+                System.out.println("Closed connection with success");
+            } catch (Exception exception) {
+                System.out.println("something went wrong while closing connection");
+                System.out.println(exception.toString());
+            }
+        }
+        return customerSpender;
     }
 
     // For a given customer give their most popular genre

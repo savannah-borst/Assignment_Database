@@ -214,8 +214,8 @@ public class CustomerRepository implements ICustomerRepository {
             preparedStatement.setString(7, customer.getEmail());
 
             //Execute SQL INSERT query
-            int result = preparedStatement.executeUpdate();
-            success = (result != 0);
+            preparedStatement.executeUpdate();
+            success = true;
             System.out.println("You successfully added a customer");
 
         } catch (Exception exception) {
@@ -235,7 +235,7 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     //Update a certain customer
-    public Boolean updateCustomer(Customer customer) {
+    public Boolean updateCustomer(String customerId, Customer customer) {
         Boolean success = false;
 
         try {
@@ -250,11 +250,11 @@ public class CustomerRepository implements ICustomerRepository {
             preparedStatement.setString(2, customer.getPostalCode());
             preparedStatement.setString(3, customer.getPhone());
             preparedStatement.setString(4, customer.getEmail());
-            preparedStatement.setInt(5, customer.getCustomerId());
+            preparedStatement.setString(5, customerId);
 
             //Execute SQL UPDATE query
-            int result = preparedStatement.executeUpdate();
-            success = (result != 0);
+            preparedStatement.executeUpdate();
+            success = true;
             System.out.println("You successfully updated a customer");
 
         } catch (Exception exception) {

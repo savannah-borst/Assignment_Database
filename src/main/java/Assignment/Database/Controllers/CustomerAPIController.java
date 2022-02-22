@@ -25,12 +25,12 @@ public class CustomerAPIController {
         return customerRepository.getAllCustomers();
     }
 
-    @GetMapping("/customer/{id}")
+    @GetMapping("/customers/{id}")
     public Customer getCustomerById(@PathVariable String id) {
         return customerRepository.getCustomerById(id);
     }
 
-    @GetMapping("/customer/")
+    @GetMapping("/customers/")
     @ResponseBody
     public Customer getCustomerByName(@RequestParam String firstName) {
         return customerRepository.getCustomerByName(firstName);
@@ -41,12 +41,12 @@ public class CustomerAPIController {
         return customerRepository.getPageOfCustomers();
     }
 
-    @PostMapping("/customer/add")
+    @PostMapping("/customers/add")
     public Boolean addCustomer(Customer customer) {
         return null;
     }
 
-    @PutMapping("/customer/update/{customer}")
+    @PutMapping("/customers/update/{customer}")
     public Boolean updateCustomer(Customer customer) {
         return null;
     }

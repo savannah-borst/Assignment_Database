@@ -104,7 +104,7 @@ public class CustomerRepository implements ICustomerRepository {
         }
 
         //Read a specific customer by name
-    public Customer getCustomerByName(String firstName) {
+    public Customer getCustomerByName(String firstName, String lastName) {
         Customer customer = null;
 
         try {
@@ -113,8 +113,9 @@ public class CustomerRepository implements ICustomerRepository {
             System.out.println("Connection to Chinook has been established.");
 
             //Make query
-            PreparedStatement preparedStatement = conn.prepareStatement("SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer WHERE FirstName LIKE ?");
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer WHERE FirstName LIKE ? AND LastName LIKE ?");
             preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
 
             //Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();

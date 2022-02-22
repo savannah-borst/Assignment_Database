@@ -32,8 +32,8 @@ public class CustomerAPIController {
 
     @GetMapping("/customers/")
     @ResponseBody
-    public Customer getCustomerByName(@RequestParam String firstName) {
-        return customerRepository.getCustomerByName(firstName);
+    public Customer getCustomerByName(@RequestParam String firstName, String lastName) {
+        return customerRepository.getCustomerByName(firstName, lastName);
     }
 
     @GetMapping("/customers/page")

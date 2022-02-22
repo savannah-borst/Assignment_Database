@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface ICustomerRepository {
     public ArrayList<Customer> getAllCustomers();
     public Customer getCustomerById(String customerId);
-    public Customer getCustomerByName(String firstName);
+    public Customer getCustomerByName(String firstName, String lastName);
     public ArrayList<Customer> getPageOfCustomers();
     public Boolean addCustomer(Customer customer);
     public Boolean updateCustomer(Customer customer);

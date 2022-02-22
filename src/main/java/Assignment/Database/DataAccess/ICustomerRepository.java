@@ -2,6 +2,7 @@ package Assignment.Database.DataAccess;
 
 import Assignment.Database.Models.Customer;
 import Assignment.Database.Models.CustomerCountry;
+import Assignment.Database.Models.CustomerSpender;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,6 @@ public interface ICustomerRepository {
     public Customer addCustomer(Customer customer);
     public Customer updateCustomer(Customer customer);
     public ArrayList<CustomerCountry> getCustomersCountry();
-    //TODO, ADD highest spender query
+    public ArrayList<CustomerSpender> getCustomerSpending();
     public Customer getCustomerGenre(int customerId);
 }

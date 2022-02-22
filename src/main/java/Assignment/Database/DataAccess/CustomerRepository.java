@@ -317,7 +317,7 @@ public class CustomerRepository {
         return customersInCountry;
     }
 
-    public ArrayList<CustomerSpender> getCustomerSpending(){
+    public ArrayList<CustomerSpender> getCustomerSpending() {
         ArrayList<CustomerSpender> customerSpender = new ArrayList<>();
 
         try {

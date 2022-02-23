@@ -247,11 +247,13 @@ public class CustomerRepository implements ICustomerRepository {
             //Make SQL UPDATE query
             PreparedStatement preparedStatement =
                     conn.prepareStatement("UPDATE customer SET FirstName = ?, LastName = ?, Country = ?,PostalCode = ?,Phone = ?,Email = ? WHERE CustomerId = ?");
-            preparedStatement.setString(1, customer.getCountry());
-            preparedStatement.setString(2, customer.getPostalCode());
-            preparedStatement.setString(3, customer.getPhone());
-            preparedStatement.setString(4, customer.getEmail());
-            preparedStatement.setString(5, customerId);
+            preparedStatement.setString(1, customer.getFirstName());
+            preparedStatement.setString(2, customer.getLastName());
+            preparedStatement.setString(3, customer.getCountry());
+            preparedStatement.setString(4, customer.getPostalCode());
+            preparedStatement.setString(5, customer.getPhone());
+            preparedStatement.setString(6, customer.getEmail());
+            preparedStatement.setString(7, customerId);
 
             //Execute SQL UPDATE query
             preparedStatement.executeUpdate();

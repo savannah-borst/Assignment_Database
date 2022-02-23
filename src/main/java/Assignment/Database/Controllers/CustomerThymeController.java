@@ -9,7 +9,7 @@ public class CustomerThymeController {
 
     @GetMapping("/home")
     public String homePage(Model model){
-        model.addAttribute("greeting", "Hallo Richie & Savannah");
+        model.addAttribute("greeting", "Welcome to the iTunes homepage");
         return "home";
     }
 

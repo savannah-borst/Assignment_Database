@@ -21,6 +21,10 @@ header {
     padding: 0;
 }
 
+.search-bar-container {
+    margin: auto;
+}
+
 button {
     margin: 0.3rem;
     color: #008464;

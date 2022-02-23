@@ -8,9 +8,8 @@ h1, h2, h3, h4, h5, h6{
 header {
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    padding: 5rem 0rem 2rem 0rem;
     width: 100%;
-    background-color: #DDF5F0;
 }
 
 .search-bar {

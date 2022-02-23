@@ -377,6 +377,7 @@ public class CustomerRepository implements ICustomerRepository {
 
             //Make query
             // For a given customer, their most popular genre (in the case of a tie, display both).
+            // https://github.com/Ladydiana/ChinookDB/blob/master/Question%20Set%203/Question1.sql Used as inspiration for the query
             PreparedStatement preparedStatement = conn.prepareStatement("WITH GenrePopularity AS\n" +
                     "         (Select Count(G.GenreId) as Popularity, C.FirstName, C.LastName, C.CustomerId, G.Name\n" +
                     "          FROM Customer C\n" +

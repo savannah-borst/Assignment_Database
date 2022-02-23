@@ -2,19 +2,19 @@ package Assignment.Database.Models;
 
 public class RandomSong {
     //Fields
-    private String randomSong;
+    private String Song;
 
     //Constructor
-    public RandomSong(String randomSong) {
-        this.randomSong = randomSong;
+    public RandomSong(String Song) {
+        this.Song = Song;
     }
 
     //Getters and Setters
-    public String getRandomSong() {
-        return randomSong;
+    public String getSong() {
+        return Song;
     }
 
-    public void setRandomSong(String randomSong) {
-        this.randomSong = randomSong;
+    public void setSong(String Song) {
+        this.Song = Song;
     }
 }

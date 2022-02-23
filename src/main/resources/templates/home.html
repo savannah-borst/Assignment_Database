@@ -8,14 +8,14 @@
     <title>Chinook Database</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid pad">
     <header class="header">
         <h1 th:text="${headertext}"></h1>
     </header>
 
     <div class="row search-bar">
         <div class="container">
-            <div class="col-md-8 search-bar-container">
+            <div class="col-md-8 search-bar-container pad">
                 <form action="" accept-charset="UTF-8" method="get">
                     <div class="input-group">
                         <input type="text" name="search" id="search" value="test"
@@ -30,41 +30,32 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <img class="card-img-top" src="" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <img class="card-img-top" src="" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <img class="card-img-top" src="" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+    <div class="row random">
+        <div class="container">
+            <div class="col-md-12">
+                <h1>Existing information</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Artists</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="artists: ${artists}">
+                        <td th:text="${artists.getArtist()}"></td>
+                        <td>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+
+    </footer>
+</div>
 </div>
 <script rel="stylesheet" th:href="@{/js/docs.min.js}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

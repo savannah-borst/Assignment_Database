@@ -2,6 +2,7 @@ package Assignment.Database.DataAccess;
 
 import Assignment.Database.Models.Customer;
 import Assignment.Database.Models.CustomerCountry;
+import Assignment.Database.Models.CustomerGenre;
 import Assignment.Database.Models.CustomerSpender;
 import org.springframework.stereotype.Repository;
 
@@ -364,8 +365,8 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     // For a given customer give their most popular genre
-    public Customer getCustomerGenre(int customerId) {
-        Customer customer = null;
+    public ArrayList<CustomerGenre> getCustomerGenre(String customerId) {
+        ArrayList<CustomerGenre> customerGenre = new ArrayList<>();
 
         try {
             //Connect to Database
@@ -374,36 +375,32 @@ public class CustomerRepository implements ICustomerRepository {
 
             //Make query
             // For a given customer, their most popular genre (in the case of a tie, display both).
-            // Most popular in this context means the genre that corresponds to the most tracks from invoices associated with that customer.
-            PreparedStatement preparedStatement = conn.prepareStatement("WITH GenrePopularity AS\n" +
-                    "         (Select Count(G.GenreId) as Popularity, C.FirstName, C.LastName, C.CustomerId, G.Name\n" +
-                    "          FROM Customer C\n" +
-                    "                   JOIN Invoice I on C.CustomerId = I.CustomerId\n" +
-                    "                   JOIN InvoiceLine IL on I.InvoiceId = IL.InvoiceId\n" +
-                    "                   JOIN Track T on IL.TrackId = T.TrackId\n" +
-                    "                   JOIN Genre G on T.GenreId = G.GenreId\n" +
-                    "          WHERE C.CustomerId = ?\n" +
-                    "          GROUP BY G.Name)\n" +
-                    "\n" +
-                    "\n" +
-                    "SELECT gp.CustomerId, gp.FirstName, gp.LastName, gp.Name, gp.Popularity\n" +
-                    "FROM GenrePopularity gp\n" +
+            PreparedStatement preparedStatement = conn.prepareStatement("WITH GenrePopularity AS" +
+                    "         (Select Count(G.GenreId) as Popularity, C.FirstName, C.LastName, C.CustomerId, G.Name" +
+                    "          FROM Customer C" +
+                    "                   JOIN Invoice I on C.CustomerId = I.CustomerId" +
+                    "                   JOIN InvoiceLine IL on I.InvoiceId = IL.InvoiceId" +
+                    "                   JOIN Track T on IL.TrackId = T.TrackId" +
+                    "                   JOIN Genre G on T.GenreId = G.GenreId" +
+                    "          WHERE C.CustomerId = ?" +
+                    "          GROUP BY G.Name)" +
+                    "SELECT gp.CustomerId, gp.FirstName, gp.LastName, gp.Name" +
+                    "FROM GenrePopularity gp" +
                     "WHERE gp.Popularity = (SELECT max(Popularity) FROM GenrePopularity)");
-            preparedStatement.setInt(1, customerId);
+            preparedStatement.setString(1, customerId);
 
             //Execute Statement
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //Process Results
             while (resultSet.next()) {
-                customer = new Customer(
+                customerGenre.add(
+                        new CustomerGenre(
                         resultSet.getInt("CustomerId"),
                         resultSet.getString("FirstName"),
                         resultSet.getString("LastName"),
-                        resultSet.getString("Country"),
-                        resultSet.getString("PostalCode"),
-                        resultSet.getString("Phone"),
-                        resultSet.getString("Email")
+                        resultSet.getString("Name")
+                        )
                 );
             }
             System.out.println("Select specific customer plus genre successful");
@@ -420,6 +417,6 @@ public class CustomerRepository implements ICustomerRepository {
                 System.out.println(exception.toString());
             }
         }
-        return customer;
+        return customerGenre;
     }
 }

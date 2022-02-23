@@ -2,6 +2,7 @@ package Assignment.Database.DataAccess;
 
 import Assignment.Database.Models.Customer;
 import Assignment.Database.Models.CustomerCountry;
+import Assignment.Database.Models.CustomerGenre;
 import Assignment.Database.Models.CustomerSpender;
 
 import java.util.ArrayList;
@@ -15,5 +16,5 @@ public interface ICustomerRepository {
     public Boolean updateCustomer(Customer customer);
     public ArrayList<CustomerCountry> getCustomersCountry();
     public ArrayList<CustomerSpender> getCustomerSpending();
-    public Customer getCustomerGenre(int customerId);
+    public ArrayList<CustomerGenre> getCustomerGenre(String customerId);
 }

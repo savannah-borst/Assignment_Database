@@ -42,9 +42,9 @@ public class CustomerAPIController {
         return customerRepository.getPageOfCustomers();
     }
 
-    @PostMapping("/customers/add")
-    public Boolean addCustomer(Customer customer) {
-        return null;
+    @PostMapping("/customers")
+    public Boolean addCustomer(@RequestBody Customer customer) {
+        return customerRepository.addCustomer(customer);
     }
 
     @PutMapping("/customers/{id}")

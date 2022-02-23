@@ -11,6 +11,7 @@ public class CustomerThymeController {
 
     @GetMapping("/home")
     public String homePage(Model model){
+        model.addAttribute("headertext", "Welcome to the Chinook Music Database");
         model.addAttribute("artists", randomRepo.randomArtists());
         model.addAttribute("songs", randomRepo.randomSongs());
         model.addAttribute("genres", randomRepo.randomGenres());

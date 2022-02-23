@@ -375,17 +375,17 @@ public class CustomerRepository implements ICustomerRepository {
 
             //Make query
             // For a given customer, their most popular genre (in the case of a tie, display both).
-            PreparedStatement preparedStatement = conn.prepareStatement("WITH GenrePopularity AS" +
-                    "         (Select Count(G.GenreId) as Popularity, C.FirstName, C.LastName, C.CustomerId, G.Name" +
-                    "          FROM Customer C" +
-                    "                   JOIN Invoice I on C.CustomerId = I.CustomerId" +
-                    "                   JOIN InvoiceLine IL on I.InvoiceId = IL.InvoiceId" +
-                    "                   JOIN Track T on IL.TrackId = T.TrackId" +
-                    "                   JOIN Genre G on T.GenreId = G.GenreId" +
-                    "          WHERE C.CustomerId = ?" +
-                    "          GROUP BY G.Name)" +
-                    "SELECT gp.CustomerId, gp.FirstName, gp.LastName, gp.Name" +
-                    "FROM GenrePopularity gp" +
+            PreparedStatement preparedStatement = conn.prepareStatement("WITH GenrePopularity AS\n" +
+                    "         (Select Count(G.GenreId) as Popularity, C.FirstName, C.LastName, C.CustomerId, G.Name\n" +
+                    "          FROM Customer C\n" +
+                    "                   JOIN Invoice I on C.CustomerId = I.CustomerId\n" +
+                    "                   JOIN InvoiceLine IL on I.InvoiceId = IL.InvoiceId\n" +
+                    "                   JOIN Track T on IL.TrackId = T.TrackId\n" +
+                    "                   JOIN Genre G on T.GenreId = G.GenreId\n" +
+                    "          WHERE C.CustomerId = ?\n" +
+                    "          GROUP BY G.Name)\n" +
+                    "SELECT gp.CustomerId, gp.FirstName, gp.LastName, gp.Name, gp.Popularity\n" +
+                    "FROM GenrePopularity gp\n" +
                     "WHERE gp.Popularity = (SELECT max(Popularity) FROM GenrePopularity)");
             preparedStatement.setString(1, customerId);
 

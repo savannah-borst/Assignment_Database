@@ -37,6 +37,12 @@ button {
 
 .random {
     background-color: #EAEAEA;
+    padding: 2rem 0;
+}
+
+.random h3 {
+    text-align: center;
+    color: black;
 }
 
 footer {

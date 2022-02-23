@@ -12,7 +12,7 @@ public class ThymeleafController {
     @GetMapping("/home")
     public String homePage(Model model){
         model.addAttribute("headertext", "Welcome to the Chinook Music Database");
-        model.addAttribute("artists", randomRepo.randomArtists());
+        model.addAttribute("artist", randomRepo.randomArtists());
         model.addAttribute("song", randomRepo.randomSongs());
         model.addAttribute("genre", randomRepo.randomGenres());
         return "home";

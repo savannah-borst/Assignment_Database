@@ -30,33 +30,56 @@
         </div>
     </div>
 
-    <div class="row random">
+    <section class="random">
+        <h3>This weeks favorite artists, songs, and genres</h3>
         <div class="container">
-            <div class="col-md-12">
-                <h1>New artists</h1>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Artists</th>
-                        <th>Songs</th>
-                        <th>Genre</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="artists: ${artists}">
-                        <td th:text="${artists.getArtist()}"></td>
-                    </tr>
-                    <tr th:each="songs: ${song}">
-                        <td th:text="${songs.getSong()}"></td>
-                    </tr>
-                    <tr th:each="genre: ${genre}">
-                        <td th:text="${genre.getGenre()}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="row random">
+                <div class="col-sm">
+                    <table class="table table-striped table-dark">
+                        <thead>
+                        <tr>
+                            <th>Artists</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="artist: ${artist}">
+                            <td th:text="${artist.getArtist()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm">
+                    <table class="table table-striped table-dark">
+                        <thead>
+                        <tr>
+                            <th>Songs</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="song: ${song}">
+                            <td th:text="${song.getSong()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm">
+                    <table class="table table-striped table-dark">
+                        <thead class="">
+                        <tr>
+                            <th>Genre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="genre: ${genre}">
+                            <td th:text="${genre.getGenre()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
 
     <footer class="footer">
 

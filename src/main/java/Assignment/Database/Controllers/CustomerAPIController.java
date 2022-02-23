@@ -46,9 +46,9 @@ public class CustomerAPIController {
         return null;
     }
 
-    @PutMapping("/customers/update/{customer}")
-    public Boolean updateCustomer(Customer customer) {
-        return null;
+    @PutMapping("/customers/{id}")
+    public Boolean updateCustomer(@PathVariable String id, @RequestBody Customer customer) {
+        return customerRepository.updateCustomer(id, customer);
     }
 
     @GetMapping("/customers/country")

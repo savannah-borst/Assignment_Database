@@ -13,7 +13,7 @@ public interface ICustomerRepository {
     public Customer getCustomerByName(String firstName, String lastName);
     public ArrayList<Customer> getPageOfCustomers();
     public Boolean addCustomer(Customer customer);
-    public Boolean updateCustomer(Customer customer);
+    public Boolean updateCustomer(String customerId, Customer customer);
     public ArrayList<CustomerCountry> getCustomersCountry();
     public ArrayList<CustomerSpender> getCustomerSpending();
     public ArrayList<CustomerGenre> getCustomerGenre(String customerId);

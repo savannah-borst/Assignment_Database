@@ -38,13 +38,19 @@
                     <thead>
                     <tr>
                         <th>Artists</th>
+                        <th>Songs</th>
+                        <th>Genre</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="artists: ${artists}">
                         <td th:text="${artists.getArtist()}"></td>
-                        <td>
-                        </td>
+                    </tr>
+                    <tr th:each="songs: ${song}">
+                        <td th:text="${songs.getSong()}"></td>
+                    </tr>
+                    <tr th:each="genre: ${genre}">
+                        <td th:text="${genre.getGenre()}"></td>
                     </tr>
                     </tbody>
                 </table>

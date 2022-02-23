@@ -13,8 +13,8 @@ public class ThymeleafController {
     public String homePage(Model model){
         model.addAttribute("headertext", "Welcome to the Chinook Music Database");
         model.addAttribute("artists", randomRepo.randomArtists());
-        model.addAttribute("songs", randomRepo.randomSongs());
-        model.addAttribute("genres", randomRepo.randomGenres());
+        model.addAttribute("song", randomRepo.randomSongs());
+        model.addAttribute("genre", randomRepo.randomGenres());
         return "home";
     }
 

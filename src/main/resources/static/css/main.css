@@ -35,6 +35,10 @@ button {
     border-radius: 25px;
 }
 
+.random {
+    background-color: #EAEAEA;
+}
+
 footer {
     background: #008464;
     padding: 3rem 0rem;

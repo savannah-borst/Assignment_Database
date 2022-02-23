@@ -13,6 +13,10 @@ header {
     background-color: #008464;
 }
 
+.pad {
+    padding: 0;
+}
+
 .search-bar {
     margin: 2rem 0;
 }
@@ -29,4 +33,9 @@ button {
     margin: 0.3rem;
     color: #008464;
     border-radius: 25px;
+}
+
+footer {
+    background: #008464;
+    padding: 3rem 0rem;
 }

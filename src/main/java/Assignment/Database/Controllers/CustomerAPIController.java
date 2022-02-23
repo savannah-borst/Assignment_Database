@@ -3,6 +3,7 @@ package Assignment.Database.Controllers;
 import Assignment.Database.DataAccess.ICustomerRepository;
 import Assignment.Database.Models.Customer;
 import Assignment.Database.Models.CustomerCountry;
+import Assignment.Database.Models.CustomerGenre;
 import Assignment.Database.Models.CustomerSpender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -62,7 +63,7 @@ public class CustomerAPIController {
     }
 
     @GetMapping("/customers/{id}/most/popular/genre")
-    public Customer getCustomerGenre(String id) {
-        return null;
+    public ArrayList<CustomerGenre> getCustomerGenre(@PathVariable String id) {
+        return customerRepository.getCustomerGenre(id);
     }
 }

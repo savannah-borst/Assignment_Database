@@ -22,14 +22,13 @@ public class SearchRepository {
             System.out.println("Connection to Chinook has been established.");
 
             //Make query for search
-            PreparedStatement preparedStatement = conn.prepareStatement("SELECT Track.Name, Art.Name, Alb.Title, G.Name FROM Track\n" +
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT Track.Name, Art.Name, Alb.Title, G.Name, (@Userinput searchQuery) FROM Track\n" +
                     "    JOIN Album Alb on Track.AlbumId = Alb.AlbumId\n" +
                     "    JOIN Artist Art on Alb.ArtistId = Art.ArtistId\n" +
                     "    JOIN Genre G on Track.GenreId = G.GenreId\n" +
-                    "WHERE Track.Name LIKE ?\n" +
-                    "\n");
+                    "WHERE Track.Name LIKE '%@Userinput%'");
             //NOG AAN TE VULLEN!!
-            //preparedStatement.setString(1, );
+            //preparedStatement.setString(1, searchQuery);
 
             //Execute statement
             ResultSet resultSet = preparedStatement.executeQuery();

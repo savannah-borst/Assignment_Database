@@ -2,14 +2,15 @@
 
 h1, h2, h3, h4, h5, h6{
     font-family: 'Roboto', sans-serif;
-
+    color: white;
 }
 
 header {
     display: flex;
     justify-content: center;
-    padding: 5rem 0rem 2rem 0rem;
+    padding: 3rem 0rem;
     width: 100%;
+    background-color: #008464;
 }
 
 .search-bar {
@@ -18,4 +19,10 @@ header {
 
 .search-bar .col-md-12 {
     padding: 0;
+}
+
+button {
+    margin: 0.3rem;
+    color: #008464;
+    border-radius: 25px;
 }

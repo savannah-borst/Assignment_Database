@@ -30,9 +30,13 @@ header {
 }
 
 button {
-    margin: 0.3rem;
-    color: #008464;
-    border-radius: 25px;
+    margin: 0.5rem 1rem;
+    background-color: #008464;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    font-weight: bold;
 }
 
 .random {

@@ -48,7 +48,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="artist: ${artist}">
+                        <tr th:each="artist: ${randartist}">
                             <td th:text="${artist.getArtist()}"></td>
                         </tr>
                         </tbody>
@@ -62,7 +62,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="song: ${song}">
+                        <tr th:each="song: ${randsong}">
                             <td th:text="${song.getSong()}"></td>
                         </tr>
                         </tbody>
@@ -76,7 +76,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="genre: ${genre}">
+                        <tr th:each="genre: ${randgenre}">
                             <td th:text="${genre.getGenre()}"></td>
                         </tr>
                         </tbody>

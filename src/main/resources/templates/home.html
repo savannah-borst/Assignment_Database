@@ -22,13 +22,12 @@
     <div class="row search-bar">
         <div class="container">
             <div class="col-md-8 search-bar-container pad">
-                <form th:action="@{/search}" th:object="${searchQuery}" accept-charset="UTF-8" method="post">
+                <form th:action="@{/search}" accept-charset="UTF-8" method="GET">
                     <div class="input-group">
-                        <input type="text" name="search" id="search" th:field="*{searchinput}" placeholder="Search for a track..."
-                               class="form-control">
+                        <input type="text" th:name="searchQuery" placeholder="Search for a track..."
+                               class="form-control"/>
                         <span class="input-group-btn">
-                                <input type="submit" class="button" value="Search"
-                                        data-disable-with="Search">
+                                <input type="submit" class="button" value="Search"/>
                             </span>
                     </div>
                 </form>
@@ -48,8 +47,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="artist: ${randartist}">
-                            <td th:text="${artist.getArtist()}"></td>
+                        <tr th:each="artists: ${artist}">
+                            <td th:text="${artists.getArtist()}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -62,8 +61,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="song: ${randsong}">
-                            <td th:text="${song.getSong()}"></td>
+                        <tr th:each="songs: ${song}">
+                            <td th:text="${songs.getSong()}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -76,8 +75,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="genre: ${randgenre}">
-                            <td th:text="${genre.getGenre()}"></td>
+                        <tr th:each="genres: ${genre}">
+                            <td th:text="${genres.getGenre()}"></td>
                         </tr>
                         </tbody>
                     </table>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Chinook Database</title>
@@ -33,17 +33,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="track: ${track}">
-                            <td th:text="${track.getTrack()}"></td>
-                        </tr>
-                        <tr th:each="artist: ${artist}">
-                            <td th:text="${artist.getArtist()}"></td>
-                        </tr>
-                        <tr th:each="album: ${album}">
-                            <td th:text="${album.getAlbum()}"></td>
-                        </tr>
-                         <tr th:each="genre: ${genre}">
-                            <td th:text="${genre.getGenre()}"></td>
+                        <tr th:each="result: ${searchResults}">
+                            <td th:text="${result.getTrack()}"></td>
+                            <td th:text="${result.getArtist()}"></td>
+                            <td th:text="${result.getAlbumName()}"></td>
+                            <td th:text="${result.getGenreName()}"></td>
                         </tr>
                         </tbody>
                     </table>

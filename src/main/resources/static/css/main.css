@@ -37,7 +37,7 @@ navigation a {
     margin: auto;
 }
 
-button {
+.button {
     margin: 0.5rem 1rem;
     background-color: #008464;
     border-radius: 10px;

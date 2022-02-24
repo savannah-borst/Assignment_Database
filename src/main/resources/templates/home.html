@@ -24,11 +24,11 @@
             <div class="col-md-8 search-bar-container pad">
                 <form th:action="@{/search}" th:object="${searchQuery}" accept-charset="UTF-8" method="post">
                     <div class="input-group">
-                        <input type="text" name="search" id="search" th:value="${searchQuery}" placeholder="Search for a track..."
+                        <input type="text" name="search" id="search" th:field="*{searchinput}" placeholder="Search for a track..."
                                class="form-control">
                         <span class="input-group-btn">
-                                <button type="submit" name="commit" value="Search"
-                                        data-disable-with="Search">Search</button>
+                                <input type="submit" class="button" value="Search"
+                                        data-disable-with="Search">
                             </span>
                     </div>
                 </form>

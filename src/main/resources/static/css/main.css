@@ -19,6 +19,7 @@ navigation a {
     display: flex;
     justify-content: center;
     margin: 1rem;
+    font-weight: bold;
 }
 
 .pad {

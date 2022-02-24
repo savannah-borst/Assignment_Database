@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class SearchRepository {
+public class SearchRepository implements ISearchRepository {
     private final String URL = ConnectionHelper.ConnectionURL;
     private Connection conn = null;
 
@@ -22,13 +22,13 @@ public class SearchRepository {
             System.out.println("Connection to Chinook has been established.");
 
             //Make query for search
-            PreparedStatement preparedStatement = conn.prepareStatement("SELECT Track.Name, Art.Name, Alb.Title, G.Name, (@Userinput searchQuery) FROM Track\n" +
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT Track.Name, Art.Name, Alb.Title, G.Name FROM Track\n" +
                     "    JOIN Album Alb on Track.AlbumId = Alb.AlbumId\n" +
                     "    JOIN Artist Art on Alb.ArtistId = Art.ArtistId\n" +
                     "    JOIN Genre G on Track.GenreId = G.GenreId\n" +
-                    "WHERE Track.Name LIKE '%@Userinput%'");
-            //NOG AAN TE VULLEN!!
-            //preparedStatement.setString(1, searchQuery);
+                    "WHERE Track.Name LIKE ?");
+
+            preparedStatement.setString(1, "%" + searchQuery + "%");
 
             //Execute statement
             ResultSet resultSet = preparedStatement.executeQuery();

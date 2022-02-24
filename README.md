@@ -1,4 +1,6 @@
 # Assignment_Database
+[![web](https://img.shields.io/static/v1?logo=heroku&message=Online&label=Heroku&color=430098)](https://chinook-assignment-database.herokuapp.com/home)
+
 This assignment was seperated into two parts:
 1. Get customer information from the database. Make API Endpoints within Postman
    1. The SQL queries can be found in the Customer Repository (Data Access map)
@@ -10,7 +12,7 @@ Java, Spring Framework, SQL and Thymeleaf was used. These were mandatory for the
 
 
 ## How To Use
-To use the Thymeleaf part you can go to: 
+To use the Thymeleaf part you can go to: https://chinook-assignment-database.herokuapp.com/home
 Here you can search tracks within the database.
 
 To make use of the API Endpoints load the Postman Collection into Postman.

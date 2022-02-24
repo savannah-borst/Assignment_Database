@@ -19,25 +19,37 @@
         <a href="home">Home</a>
     </navigation>
 
-    <div class="row search-bar">
+    <section class="search-results random">
         <div class="container">
-            <div class="col-md-8 search-bar-container pad">
-                <form action="" accept-charset="UTF-8" method="get">
-                    <div class="input-group">
-                        <input type="text" name="search" id="search" placeholder="Search for a track..."
-                               class="form-control">
-                        <span class="input-group-btn">
-                                <button type="submit" name="commit" value="Search"
-                                        data-disable-with="Search">Search</button>
-                            </span>
-                    </div>
-                </form>
+            <div class="row random">
+                <div class="col-sm">
+                    <table class="table table-striped table-dark">
+                        <thead>
+                        <tr>
+                            <th>Track</th>
+                            <th>Artist</th>
+                            <th>Album</th>
+                            <th>Genre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="track: ${track}">
+                            <td th:text="${track.getTrack()}"></td>
+                        </tr>
+                        <tr th:each="artist: ${artist}">
+                            <td th:text="${artist.getArtist()}"></td>
+                        </tr>
+                        <tr th:each="album: ${album}">
+                            <td th:text="${album.getAlbum()}"></td>
+                        </tr>
+                         <tr th:each="genre: ${genre}">
+                            <td th:text="${genre.getGenre()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
-    <section class="search-results random">
-
     </section>
 
 </body>

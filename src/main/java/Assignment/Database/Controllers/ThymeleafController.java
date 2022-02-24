@@ -18,4 +18,10 @@ public class ThymeleafController {
         return "home";
     }
 
+    @GetMapping("/search")
+    public String searchPage(Model model) {
+        model.addAttribute("headertext", "Welcome to the Chinook Music Database");
+        return "search";
+    }
+
 }

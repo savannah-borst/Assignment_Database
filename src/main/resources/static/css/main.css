@@ -13,6 +13,14 @@ header {
     background-color: #008464;
 }
 
+navigation a {
+    color: #008464;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
 .pad {
     padding: 0;
 }

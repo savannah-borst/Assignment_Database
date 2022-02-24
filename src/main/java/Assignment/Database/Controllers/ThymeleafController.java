@@ -33,6 +33,7 @@ public class ThymeleafController {
     @GetMapping("/search")
     public String searchPage(@RequestParam String searchQuery, Model model) {
         ArrayList<Search> searchResult = searchRepo.getSearch(searchQuery);
+        model.addAttribute("headertext", "Welcome to the Chinook Music Database");
         model.addAttribute("searchResults" , searchResult);
         return "search";
     }

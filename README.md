@@ -1,4 +1,4 @@
-#Noroff Bootcamp Assignment 2: Access and expose a database.
+# Noroff Bootcamp Assignment 2: Access and expose a database.
 [![web](https://img.shields.io/static/v1?logo=heroku&message=Online&label=Heroku&color=430098)](https://chinook-assignment-database.herokuapp.com/home)
 
 This assignment was seperated into two parts:
